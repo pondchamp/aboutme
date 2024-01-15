@@ -46,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-simple-import-sort", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.0.0"],\
             ["eslint-plugin-sort-keys-fix", "npm:1.1.2"],\
             ["eslint-plugin-typescript-sort-keys", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.3.0"],\
+            ["framer-motion", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.18.0"],\
             ["glob", "npm:10.2.6"],\
             ["moment", "npm:2.29.4"],\
             ["moment-timezone", "npm:0.5.43"],\
@@ -71,6 +72,25 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@babel/runtime", "npm:7.21.0"],\
             ["regenerator-runtime", "npm:0.13.11"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@emotion/is-prop-valid", [\
+        ["npm:0.8.8", {\
+          "packageLocation": "./.yarn/cache/@emotion-is-prop-valid-npm-0.8.8-261a0f2426-bb7ec6d48c.zip/node_modules/@emotion/is-prop-valid/",\
+          "packageDependencies": [\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@emotion/memoize", "npm:0.7.4"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@emotion/memoize", [\
+        ["npm:0.7.4", {\
+          "packageLocation": "./.yarn/cache/@emotion-memoize-npm-0.7.4-5648cf11b8-4e3920d4ec.zip/node_modules/@emotion/memoize/",\
+          "packageDependencies": [\
+            ["@emotion/memoize", "npm:0.7.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -891,6 +911,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-simple-import-sort", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.0.0"],\
             ["eslint-plugin-sort-keys-fix", "npm:1.1.2"],\
             ["eslint-plugin-typescript-sort-keys", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.3.0"],\
+            ["framer-motion", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.18.0"],\
             ["glob", "npm:10.2.6"],\
             ["moment", "npm:2.29.4"],\
             ["moment-timezone", "npm:0.5.43"],\
@@ -2574,6 +2595,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/fraction.js-npm-4.2.0-28efe4afc7-8c76a6e21d.zip/node_modules/fraction.js/",\
           "packageDependencies": [\
             ["fraction.js", "npm:4.2.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["framer-motion", [\
+        ["npm:10.18.0", {\
+          "packageLocation": "./.yarn/cache/framer-motion-npm-10.18.0-5bde07d9ec-b43f1edcfc.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "npm:10.18.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.18.0", {\
+          "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-a5fad5f1d8/0/cache/framer-motion-npm-10.18.0-5bde07d9ec-b43f1edcfc.zip/node_modules/framer-motion/",\
+          "packageDependencies": [\
+            ["framer-motion", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:10.18.0"],\
+            ["@emotion/is-prop-valid", "npm:0.8.8"],\
+            ["@types/react", "npm:18.0.37"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"],\
+            ["tslib", "npm:2.5.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

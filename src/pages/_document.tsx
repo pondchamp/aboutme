@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       <Head key="document">
         <link
-          href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Caveat:wght@400;500;600;700&family=Courier+Prime:wght@400;700&family=Patua+One&family=Sacramento&display=swap"
+          href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Rubik+Mono+One&display=swap"
           rel="stylesheet"
         />
         <link rel="icon" href="/favicon.ico" />

@@ -4,23 +4,11 @@
 
 html,
 body {
-  font-family: "Caprasimo", sans-serif;
+  font-family: "DM Mono", monospace;
 }
 
-.numeric {
-  font-family: "Sacramento", sans-serif;
-}
-
-.small-text {
-  font-family: "Patua One", sans-serif;
-}
-
-.mono-text {
-  font-family: "Courier Prime", monospace;
-}
-
-.hand-text {
-  font-family: "Caveat", sans-serif;
+h1 {
+  font-family: "Rubik Mono One", monospace;
 }
 
 html {

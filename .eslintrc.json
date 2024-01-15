@@ -1,0 +1,33 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next/core-web-vitals",
+    "prettier",
+    "plugin:typescript-sort-keys/recommended"
+  ],
+  "rules": {
+    "quotes": ["error", "double", { "avoidEscape": true }],
+    "semi": ["error", "always"],
+    "react/no-danger": "error",
+    "no-multi-spaces": "error",
+    "sort-keys": "error",
+    "sort-keys-fix/sort-keys-fix": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "curly": "warn",
+    "no-undef-init": "warn",
+    "no-unneeded-ternary": "warn",
+    "no-var": "error",
+    "prefer-const": "warn",
+    "spaced-comment": ["warn", "always", { "markers": ["/"] }],
+    "block-spacing": "warn",
+    "array-bracket-spacing": "warn",
+    "arrow-spacing": "warn",
+    "brace-style": "warn",
+    "comma-spacing": "warn",
+    "function-call-argument-newline": ["warn", "consistent"],
+    "no-trailing-spaces": "warn",
+    "no-whitespace-before-property": "warn"
+  },
+  "plugins": ["sort-keys-fix", "typescript-sort-keys", "simple-import-sort"]
+}

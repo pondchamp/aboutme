@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Home: NextPage = () => {
   return (
-    <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center bg-black text-white">
+    <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center bg-gradient-to-b from-brown1 to-brown2 text-beige">
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ ease: "easeInOut", type: "spring" }}
@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       <h1 className="text-3xl">Julian J. Blair</h1>
       <div>
         <Link
-          className="font-semibold text-blue-500"
+          className="font-semibold"
           href="https://www.linkedin.com/in/julianblair/"
         >
           LinkedIn

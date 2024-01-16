@@ -61,7 +61,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-tooltip", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:5.21.6"],\
             ["redux", "npm:4.2.1"],\
             ["tailwindcss", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:3.3.1"],\
-            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"],\
+            ["typewriter-effect", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.21.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -926,7 +927,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-tooltip", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:5.21.6"],\
             ["redux", "npm:4.2.1"],\
             ["tailwindcss", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:3.3.1"],\
-            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
+            ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"],\
+            ["typewriter-effect", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.21.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -4284,6 +4286,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["performance-now", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/performance-now-npm-2.1.0-45e3ce7e49-534e641aa8.zip/node_modules/performance-now/",\
+          "packageDependencies": [\
+            ["performance-now", "npm:2.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["picocolors", [\
         ["npm:1.0.0", {\
           "packageLocation": "./.yarn/cache/picocolors-npm-1.0.0-d81e0b1927-a2e8092dd8.zip/node_modules/picocolors/",\
@@ -4556,6 +4567,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/quick-lru-npm-5.1.1-e38e0edce3-a516faa255.zip/node_modules/quick-lru/",\
           "packageDependencies": [\
             ["quick-lru", "npm:5.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["raf", [\
+        ["npm:3.4.1", {\
+          "packageLocation": "./.yarn/cache/raf-npm-3.4.1-c25d48d76e-50ba284e48.zip/node_modules/raf/",\
+          "packageDependencies": [\
+            ["raf", "npm:3.4.1"],\
+            ["performance-now", "npm:2.1.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -5491,6 +5512,34 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/typescript-patch-260000abbe-bb309d320c.zip/node_modules/typescript/",\
           "packageDependencies": [\
             ["typescript", "patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=85af82"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["typewriter-effect", [\
+        ["npm:2.21.0", {\
+          "packageLocation": "./.yarn/cache/typewriter-effect-npm-2.21.0-7c3a601393-bd2fe63bfa.zip/node_modules/typewriter-effect/",\
+          "packageDependencies": [\
+            ["typewriter-effect", "npm:2.21.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.21.0", {\
+          "packageLocation": "./.yarn/__virtual__/typewriter-effect-virtual-f734e48314/0/cache/typewriter-effect-npm-2.21.0-7c3a601393-bd2fe63bfa.zip/node_modules/typewriter-effect/",\
+          "packageDependencies": [\
+            ["typewriter-effect", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:2.21.0"],\
+            ["@types/react", "npm:18.0.37"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["raf", "npm:3.4.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
           ],\
           "linkType": "HARD"\
         }]\

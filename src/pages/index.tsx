@@ -3,6 +3,8 @@ import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
+import { Title } from "@/components/title";
+
 const Home: NextPage = () => {
   return (
     <div className="absolute inset-0 flex flex-col gap-6 items-center justify-center bg-gradient-to-b from-brown1 to-brown2 text-beige">
@@ -18,7 +20,9 @@ const Home: NextPage = () => {
           height={150}
         />
       </motion.div>
-      <h1 className="text-3xl">Julian J. Blair</h1>
+      <h1 className="text-3xl">
+        <Title />
+      </h1>
       <div>
         <Link
           className="font-semibold"

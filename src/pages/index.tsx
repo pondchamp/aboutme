@@ -12,15 +12,26 @@ const Home: NextPage = () => {
         whileHover={{ scale: 1.1 }}
         transition={{ ease: "easeInOut", type: "spring" }}
       >
-        <Image
-          className="rounded-[48pt]"
-          src="img/me.jpg"
-          alt="profile"
-          width={150}
-          height={150}
-        />
+        <div className="block md:hidden">
+          <Image
+            className="rounded-[40pt]"
+            src="img/me.jpg"
+            alt="profile"
+            width={120}
+            height={120}
+          />
+        </div>
+        <div className="hidden md:block">
+          <Image
+            className="rounded-[48pt]"
+            src="img/me.jpg"
+            alt="profile"
+            width={150}
+            height={150}
+          />
+        </div>
       </motion.div>
-      <h1 className="text-3xl">
+      <h1 className="text-2xl md:text-3xl">
         <Title />
       </h1>
       <div>

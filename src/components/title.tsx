@@ -4,14 +4,16 @@ import Typewriter, { TypewriterClass } from "typewriter-effect";
 import { FullName, MyName } from "@/util";
 
 export const Title = () => {
-  const [init, setInit] = useState(false);
+  const prefixChar = 3;
+  const [fixedText, setFixedText] = useState<string | undefined>(FullName);
   const [writer, setWriter] = useState<TypewriterClass>();
 
   const animate = (typewriter: TypewriterClass) => {
     typewriter
       .changeDelay(1)
       .typeString(FullName)
-      .callFunction(() => setInit(true))
+      .callFunction(() => setFixedText(undefined))
+      .changeDeleteSpeed(20)
       .changeDelay(50)
       .start();
     setWriter(typewriter);
@@ -19,17 +21,22 @@ export const Title = () => {
 
   useEffect(() => {
     if (writer) {
-      writer.deleteAll(30).pauseFor(500).typeString(MyName).start();
-      setWriter(writer);
+      writer
+        .deleteChars(FullName.length - prefixChar)
+        .pauseFor(200)
+        .typeString(MyName.slice(prefixChar))
+        .pauseFor(200)
+        .callFunction(() => setFixedText(MyName))
+        .start();
     }
   }, [writer]);
 
   return (
     <>
-      <div className={init ? "block" : "hidden"}>
+      <div className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
         <Typewriter onInit={animate} options={{}} />
       </div>
-      <div className={init ? "hidden" : "block"}>{FullName}</div>
+      <div className={fixedText ? "block" : "hidden"}>{fixedText}</div>
     </>
   );
 };

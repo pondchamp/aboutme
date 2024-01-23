@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Title } from "@/components/title";
+const Title = dynamic(
+  () => import("@/components/title").then((mod) => mod.Title),
+  { ssr: false }
+);
 
 const Home: NextPage = () => {
   return (
@@ -19,6 +23,7 @@ const Home: NextPage = () => {
             alt="profile"
             width={120}
             height={120}
+            priority
           />
         </div>
         <div className="hidden md:block">
@@ -28,10 +33,11 @@ const Home: NextPage = () => {
             alt="profile"
             width={150}
             height={150}
+            priority
           />
         </div>
       </motion.div>
-      <h1 className="text-2xl md:text-3xl">
+      <h1 className="text-2xl md:text-3xl h-9">
         <Title />
       </h1>
       <div>

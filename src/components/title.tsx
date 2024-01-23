@@ -1,10 +1,15 @@
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import Typewriter, { TypewriterClass } from "typewriter-effect";
+import type { TypewriterClass } from "typewriter-effect";
 
+import { usePageViewed } from "@/hooks/usePageViewed";
 import { FullName, MyName } from "@/util";
+
+const Typewriter = dynamic(() => import("typewriter-effect"));
 
 export const Title = () => {
   const prefixChar = 3;
+  const [pageViewed, setPageViewed] = usePageViewed();
   const [fixedText, setFixedText] = useState<string | undefined>(FullName);
   const [writer, setWriter] = useState<TypewriterClass>();
 
@@ -27,16 +32,19 @@ export const Title = () => {
         .typeString(MyName.slice(prefixChar))
         .pauseFor(200)
         .callFunction(() => setFixedText(MyName))
+        .callFunction(setPageViewed)
         .start();
     }
-  }, [writer]);
+  }, [setPageViewed, writer]);
 
-  return (
+  return pageViewed ? (
+    <>{MyName}</>
+  ) : (
     <>
-      <div className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
+      <span className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
         <Typewriter onInit={animate} options={{}} />
-      </div>
-      <div className={fixedText ? "block" : "hidden"}>{fixedText}</div>
+      </span>
+      <span className={fixedText ? "block" : "hidden"}>{fixedText}</span>
     </>
   );
 };

@@ -10,8 +10,16 @@ import { useViewport } from "@/hooks/useViewport";
 import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
 
 const profileRefFinal = {
-  height: "160px",
+  fontSize: "20px",
+  gap: "8px",
+  height: "180px",
+  lineHeight: "32px",
   width: "120px",
+};
+
+const profileImgRefFinal = {
+  height: 85,
+  width: 85,
 };
 
 const Title = dynamic(
@@ -26,7 +34,39 @@ export const Profile = () => {
   const profileRef = createRef<HTMLDivElement>();
   const profileImgRef = createRef<HTMLDivElement>();
   const layoutState = useAppSelector((state) => state.layout, shallowEqual);
-  const finalScale = 0.7;
+
+  const profileIconSizeSm = 50;
+  const shrinkIconScrollTop = 100;
+  const shrinkIconScrollTopBuffer = 50;
+  const {
+    initWidth,
+    initHeight,
+    initImgWidth,
+    initImgHeight,
+    initFontSize,
+    initLineHeight,
+    initFlexGap,
+  } =
+    layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
+    layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
+      ? {
+          initFlexGap: "16px",
+          initFontSize: "30px",
+          initHeight: "100%",
+          initImgHeight: 120,
+          initImgWidth: 120,
+          initLineHeight: "36px",
+          initWidth: "100%",
+        }
+      : {
+          initFlexGap: profileRefFinal.gap,
+          initFontSize: profileRefFinal.fontSize,
+          initHeight: profileRefFinal.height,
+          initImgHeight: profileImgRefFinal.height,
+          initImgWidth: profileImgRefFinal.width,
+          initLineHeight: profileRefFinal.lineHeight,
+          initWidth: profileRefFinal.width,
+        };
 
   // Post profile mount
   useEffect(() => {
@@ -40,13 +80,19 @@ export const Profile = () => {
 
     animate(
       profileImgRef.current,
-      { scale: [1, finalScale] },
+      {
+        height: [initImgHeight, profileImgRefFinal.height],
+        width: [initImgWidth, profileImgRefFinal.width],
+      },
       { type: "keyframes" }
     );
     animate(
       profileRef.current,
       {
+        fontSize: [initFontSize, profileRefFinal.fontSize],
+        gap: [initFlexGap, profileRefFinal.gap],
         height: [`${height}px`, profileRefFinal.height],
+        lineHeight: [initLineHeight, profileRefFinal.lineHeight],
         width: [`${width}px`, profileRefFinal.width],
       },
       {
@@ -60,6 +106,11 @@ export const Profile = () => {
   }, [
     dispatch,
     height,
+    initFlexGap,
+    initFontSize,
+    initImgHeight,
+    initImgWidth,
+    initLineHeight,
     layoutState.layoutAnimState,
     profileImgRef,
     profileRef,
@@ -67,84 +118,72 @@ export const Profile = () => {
     width,
   ]);
 
-  const profileIconSizeLg = 120;
-  const profileIconSizeSm = 70;
-  const shrinkIconScrollTop = 200;
-  const shrinkIconScrollTopBuffer = 120;
-  const { initWidth, initHeight } =
-    layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
-    layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
-      ? { initHeight: "100%", initWidth: "100%" }
-      : {
-          initHeight: profileRefFinal.height,
-          initWidth: profileRefFinal.width,
-        };
-
-  return (
+  return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className={`absolute top-0 left-0 flex items-center justify-center ${
-        layoutState.layoutAnimState == LayoutAnimState.NOT_MOUNTED
-          ? "hidden"
-          : ""
-      }`}
+      className="z-10 absolute top-0 left-0 flex flex-col items-center justify-center"
       style={{
+        fontSize: initFontSize,
+        gap: initFlexGap,
         height: initHeight,
         width: initWidth,
       }}
       ref={profileRef}
     >
       <div
+        style={{
+          height: initImgHeight,
+          opacity:
+            layoutState.contentScrollTop <
+            shrinkIconScrollTop - shrinkIconScrollTopBuffer
+              ? 1
+              : Math.max(
+                  0.6,
+                  1 -
+                    (layoutState.contentScrollTop -
+                      (shrinkIconScrollTop - shrinkIconScrollTopBuffer)) /
+                      100
+                ),
+          width: initImgWidth,
+          zIndex: 20,
+        }}
         ref={profileImgRef}
-        className="z-10 flex flex-col gap-4 items-center justify-center"
-        style={
-          layoutState.layoutAnimState == LayoutAnimState.COMPLETED
-            ? { scale: finalScale }
-            : {}
-        }
       >
-        <div
+        <Image
+          src="img/me.jpg"
+          alt="profile"
+          width={
+            layoutState.contentScrollTop <
+            shrinkIconScrollTop - shrinkIconScrollTopBuffer
+              ? initImgHeight
+              : Math.max(
+                  profileIconSizeSm,
+                  initImgHeight -
+                    (layoutState.contentScrollTop -
+                      (shrinkIconScrollTop - shrinkIconScrollTopBuffer))
+                )
+          }
+          height={initImgHeight}
+          priority
           style={{
-            height: profileIconSizeLg,
-            width: profileIconSizeLg,
-            zIndex: 20,
+            borderRadius: 32,
+          }}
+        />
+      </div>
+      <div className="w-full h-9 text-center flex items-end justify-center">
+        <h1
+          style={{
+            opacity: Math.max(
+              0,
+              1 - (layoutState.contentScrollTop / shrinkIconScrollTop) * 3.5
+            ),
+            paddingBottom: Math.min(150, layoutState.contentScrollTop * 1.5),
           }}
         >
-          <Image
-            src="img/me.jpg"
-            alt="profile"
-            width={
-              layoutState.contentScrollTop <
-              shrinkIconScrollTop - shrinkIconScrollTopBuffer
-                ? profileIconSizeLg
-                : Math.max(
-                    profileIconSizeSm,
-                    profileIconSizeLg -
-                      (layoutState.contentScrollTop -
-                        (shrinkIconScrollTop - shrinkIconScrollTopBuffer))
-                  )
-            }
-            height={profileIconSizeLg}
-            priority
-            style={{
-              borderRadius: 48,
-            }}
-          />
-        </div>
-        <div className="w-full h-10 text-center flex items-center">
-          <h1
-            className="text-3xl pb-24"
-            style={{
-              opacity: Math.max(
-                0,
-                1 - (layoutState.contentScrollTop / shrinkIconScrollTop) * 3
-              ),
-              paddingBottom: Math.min(150, layoutState.contentScrollTop * 1.5),
-            }}
-          >
-            <Title />
-          </h1>
-        </div>
+          <Title />
+        </h1>
       </div>
     </div>
+  ) : (
+    <></>
   );
 };

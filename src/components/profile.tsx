@@ -1,10 +1,11 @@
-import { animate, motion } from "framer-motion";
+import { animate } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { createRef, useEffect } from "react";
 import { shallowEqual } from "react-redux";
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { LayoutWidths, useResponsiveLayout } from "@/hooks/useResponsiveLayout";
 import { LayoutAnimState } from "@/slice/LayoutSlice";
 
 const Title = dynamic(
@@ -13,6 +14,7 @@ const Title = dynamic(
 );
 
 export const Profile = () => {
+  const { widthFlags } = useResponsiveLayout();
   const dispatch = useAppDispatch();
   const profileImgRef = createRef<HTMLDivElement>();
   const layoutState = useAppSelector((state) => state.layout, shallowEqual);
@@ -28,36 +30,24 @@ export const Profile = () => {
     animate(profileImgRef.current, { scale: [1, 0.7] }, { type: "spring" });
   }, [dispatch, layoutState.layoutAnimState, profileImgRef]);
   return (
-    <div className="flex flex-col items-center justify-center">
-      <div
-        ref={profileImgRef}
-        className={`${
-          layoutState.layoutAnimState == LayoutAnimState.COMPLETED
-            ? "scale-[.7]"
-            : ""
-        }`}
-      >
-        <div className="block md:hidden">
-          <Image
-            className="rounded-[40pt]"
-            src="img/me.jpg"
-            alt="profile"
-            width={120}
-            height={120}
-            priority
-          />
-        </div>
-        <div className="hidden md:block">
-          <Image
-            className="rounded-[48pt]"
-            src="img/me.jpg"
-            alt="profile"
-            width={150}
-            height={150}
-            priority
-          />
-        </div>
-      </div>
+    <div
+      ref={profileImgRef}
+      className={`z-10 flex flex-col gap-4 items-center justify-center ${
+        layoutState.layoutAnimState == LayoutAnimState.COMPLETED
+          ? "scale-[.7]"
+          : ""
+      }`}
+    >
+      <Image
+        className={
+          !!widthFlags[LayoutWidths.md] ? "rounded-[48pt]" : "rounded-[40pt]"
+        }
+        src="img/me.jpg"
+        alt="profile"
+        width={!!widthFlags[LayoutWidths.md] ? 150 : 120}
+        height={!!widthFlags[LayoutWidths.md] ? 150 : 120}
+        priority
+      />
       <h1 className="text-2xl md:text-3xl h-9">
         <Title />
       </h1>

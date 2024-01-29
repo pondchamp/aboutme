@@ -1,15 +1,20 @@
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { shallowEqual } from "react-redux";
+import { useDispatch } from "react-redux";
 import type { TypewriterClass } from "typewriter-effect";
 
-import { usePageViewed } from "@/hooks/usePageViewed";
+import { useAppSelector } from "@/hooks";
+import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
 import { FullName, MyName } from "@/util";
 
 const Typewriter = dynamic(() => import("typewriter-effect"));
 
+const prefixChar = 3;
+
 export const Title = () => {
-  const prefixChar = 3;
-  const [pageViewed, setPageViewed] = usePageViewed();
+  const dispatch = useDispatch();
+  const layoutState = useAppSelector((state) => state.layout, shallowEqual);
   const [fixedText, setFixedText] = useState<string | undefined>(FullName);
   const [writer, setWriter] = useState<TypewriterClass>();
 
@@ -32,19 +37,23 @@ export const Title = () => {
         .typeString(MyName.slice(prefixChar))
         .pauseFor(200)
         .callFunction(() => setFixedText(MyName))
-        .callFunction(setPageViewed)
+        .callFunction(() =>
+          dispatch(SetLayoutAnimState(LayoutAnimState.PROFILE_MOUNTED))
+        )
         .start();
     }
-  }, [setPageViewed, writer]);
+  }, [dispatch, writer]);
 
-  return pageViewed ? (
-    <>{MyName}</>
-  ) : (
+  return layoutState.layoutAnimState == LayoutAnimState.NOT_MOUNTED ? (
+    <></>
+  ) : layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ? (
     <>
       <span className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
         <Typewriter onInit={animate} options={{}} />
       </span>
       <span className={fixedText ? "block" : "hidden"}>{fixedText}</span>
     </>
+  ) : (
+    <>{MyName}</>
   );
 };

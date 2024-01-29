@@ -11,10 +11,12 @@ export enum LayoutAnimState {
 }
 
 interface LayoutInitialState {
+  contentScrollTop: number;
   layoutAnimState: LayoutAnimState;
 }
 
 const initialState: LayoutInitialState = {
+  contentScrollTop: 0,
   layoutAnimState: LayoutAnimState.NOT_MOUNTED,
 };
 
@@ -22,6 +24,9 @@ export const LayoutSlice = createSlice({
   initialState,
   name: "layoutSlice",
   reducers: {
+    SetContentScrollTop: (state, action: PayloadAction<number>) => {
+      state.contentScrollTop = action.payload;
+    },
     SetLayoutAnimState: (state, action: PayloadAction<LayoutAnimState>) => {
       if (DebugMode) {
         console.log(`New anim state: ${LayoutAnimState[action.payload]}`);
@@ -31,5 +36,5 @@ export const LayoutSlice = createSlice({
   },
 });
 
-export const { SetLayoutAnimState } = LayoutSlice.actions;
+export const { SetContentScrollTop, SetLayoutAnimState } = LayoutSlice.actions;
 export default LayoutSlice.reducer;

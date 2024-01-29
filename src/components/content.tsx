@@ -1,9 +1,14 @@
 import { animate } from "framer-motion";
 import { createRef, useEffect } from "react";
+import { Scrollbars } from "react-custom-scrollbars-2";
 import { shallowEqual } from "react-redux";
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
+import {
+  LayoutAnimState,
+  SetContentScrollTop,
+  SetLayoutAnimState,
+} from "@/slice/LayoutSlice";
 
 export const Content = () => {
   const dispatch = useAppDispatch();
@@ -26,20 +31,25 @@ export const Content = () => {
         onComplete: () => {
           dispatch(SetLayoutAnimState(LayoutAnimState.COMPLETED));
         },
-        type: "spring",
+        type: "keyframes",
       }
     );
   }, [dispatch, layoutState.layoutAnimState, contentRef]);
-  return (
-    <div
-      className={`absolute inset-0 flex items-center justify-center ${
-        layoutState.layoutAnimState != LayoutAnimState.COMPLETED
-          ? "opacity-0"
-          : ""
-      }`}
-      ref={contentRef}
-    >
-      <span className="text-2xl font-bold">🚧 Under Construction 🚧</span>
+
+  return layoutState.layoutAnimState == LayoutAnimState.COMPLETED ||
+    layoutState.layoutAnimState == LayoutAnimState.CONTENT_MOUNT_READY ? (
+    <div className="absolute inset-0" ref={contentRef}>
+      <Scrollbars
+        onScrollFrame={({ scrollTop }) =>
+          dispatch(SetContentScrollTop(scrollTop))
+        }
+      >
+        <div className="w-full h-[1000px] flex items-center justify-center">
+          <span className="text-2xl font-bold">🚧 Under Construction 🚧</span>
+        </div>
+      </Scrollbars>
     </div>
+  ) : (
+    <></>
   );
 };

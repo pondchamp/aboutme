@@ -57,6 +57,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-bootstrap-icons", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.10.3"],\
             ["react-cookie", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.1.1"],\
+            ["react-custom-scrollbars-2", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.5.0"],\
             ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"],\
             ["react-parallax-tilt", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.7.151"],\
             ["react-redux", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:9.1.0"],\
@@ -964,6 +965,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react", "npm:18.2.0"],\
             ["react-bootstrap-icons", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.10.3"],\
             ["react-cookie", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.1.1"],\
+            ["react-custom-scrollbars-2", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.5.0"],\
             ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"],\
             ["react-parallax-tilt", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.7.151"],\
             ["react-redux", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:9.1.0"],\
@@ -1023,6 +1025,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/acorn",\
             "acorn"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["add-px-to-style", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/add-px-to-style-npm-1.0.0-dcfd7231ac-673831d81d.zip/node_modules/add-px-to-style/",\
+          "packageDependencies": [\
+            ["add-px-to-style", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -1792,6 +1803,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["doctrine", "npm:3.0.0"],\
             ["esutils", "npm:2.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["dom-css", [\
+        ["npm:2.1.0", {\
+          "packageLocation": "./.yarn/cache/dom-css-npm-2.1.0-386a19033e-f61cc63e88.zip/node_modules/dom-css/",\
+          "packageDependencies": [\
+            ["dom-css", "npm:2.1.0"],\
+            ["add-px-to-style", "npm:1.0.0"],\
+            ["prefix-style", "npm:2.0.1"],\
+            ["to-camel-case", "npm:1.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4533,6 +4556,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["prefix-style", [\
+        ["npm:2.0.1", {\
+          "packageLocation": "./.yarn/cache/prefix-style-npm-2.0.1-3d7f8fe8cc-79c3559b74.zip/node_modules/prefix-style/",\
+          "packageDependencies": [\
+            ["prefix-style", "npm:2.0.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["prelude-ls", [\
         ["npm:1.2.1", {\
           "packageLocation": "./.yarn/cache/prelude-ls-npm-1.2.1-3e4d272a55-cd192ec0d0.zip/node_modules/prelude-ls/",\
@@ -4686,6 +4718,35 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],\
           "packagePeers": [\
             "@types/react",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["react-custom-scrollbars-2", [\
+        ["npm:4.5.0", {\
+          "packageLocation": "./.yarn/cache/react-custom-scrollbars-2-npm-4.5.0-420f40d266-b264629c0b.zip/node_modules/react-custom-scrollbars-2/",\
+          "packageDependencies": [\
+            ["react-custom-scrollbars-2", "npm:4.5.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.5.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-custom-scrollbars-2-virtual-20faa1422d/0/cache/react-custom-scrollbars-2-npm-4.5.0-420f40d266-b264629c0b.zip/node_modules/react-custom-scrollbars-2/",\
+          "packageDependencies": [\
+            ["react-custom-scrollbars-2", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:4.5.0"],\
+            ["@types/react", "npm:18.0.37"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["dom-css", "npm:2.1.0"],\
+            ["prop-types", "npm:15.8.1"],\
+            ["raf", "npm:3.4.1"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
             "react"\
           ],\
           "linkType": "HARD"\
@@ -5513,12 +5574,41 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["to-camel-case", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/to-camel-case-npm-1.0.0-2e7e71c9af-2f74cfcffa.zip/node_modules/to-camel-case/",\
+          "packageDependencies": [\
+            ["to-camel-case", "npm:1.0.0"],\
+            ["to-space-case", "npm:1.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["to-no-case", [\
+        ["npm:1.0.2", {\
+          "packageLocation": "./.yarn/cache/to-no-case-npm-1.0.2-2d005c2291-1d85326eeb.zip/node_modules/to-no-case/",\
+          "packageDependencies": [\
+            ["to-no-case", "npm:1.0.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["to-regex-range", [\
         ["npm:5.0.1", {\
           "packageLocation": "./.yarn/cache/to-regex-range-npm-5.0.1-f1e8263b00-f76fa01b3d.zip/node_modules/to-regex-range/",\
           "packageDependencies": [\
             ["to-regex-range", "npm:5.0.1"],\
             ["is-number", "npm:7.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["to-space-case", [\
+        ["npm:1.0.0", {\
+          "packageLocation": "./.yarn/cache/to-space-case-npm-1.0.0-6bc33e5f5c-157cebe3e9.zip/node_modules/to-space-case/",\
+          "packageDependencies": [\
+            ["to-space-case", "npm:1.0.0"],\
+            ["to-no-case", "npm:1.0.2"]\
           ],\
           "linkType": "HARD"\
         }]\

@@ -12,7 +12,7 @@ import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
 const profileRefFinal = {
   fontSize: "20px",
   gap: "8px",
-  height: "180px",
+  height: "160px",
   lineHeight: "32px",
   width: "120px",
 };
@@ -37,7 +37,7 @@ export const Profile = () => {
 
   const profileIconSizeSm = 50;
   const shrinkIconScrollTop = 100;
-  const shrinkIconScrollTopBuffer = 50;
+  const shrinkIconScrollTopBuffered = shrinkIconScrollTop - 70;
   const {
     initWidth,
     initHeight,
@@ -133,14 +133,13 @@ export const Profile = () => {
         style={{
           height: initImgHeight,
           opacity:
-            layoutState.contentScrollTop <
-            shrinkIconScrollTop - shrinkIconScrollTopBuffer
+            layoutState.contentScrollTop < shrinkIconScrollTopBuffered
               ? 1
               : Math.max(
                   0.6,
                   1 -
                     (layoutState.contentScrollTop -
-                      (shrinkIconScrollTop - shrinkIconScrollTopBuffer)) /
+                      shrinkIconScrollTopBuffered) /
                       100
                 ),
           width: initImgWidth,
@@ -152,14 +151,12 @@ export const Profile = () => {
           src="img/me.jpg"
           alt="profile"
           width={
-            layoutState.contentScrollTop <
-            shrinkIconScrollTop - shrinkIconScrollTopBuffer
+            layoutState.contentScrollTop < shrinkIconScrollTopBuffered
               ? initImgHeight
               : Math.max(
                   profileIconSizeSm,
                   initImgHeight -
-                    (layoutState.contentScrollTop -
-                      (shrinkIconScrollTop - shrinkIconScrollTopBuffer))
+                    (layoutState.contentScrollTop - shrinkIconScrollTopBuffered)
                 )
           }
           height={initImgHeight}

@@ -29,7 +29,7 @@ const Home: NextPage = () => {
   }, [dispatch, layoutState.layoutAnimState, pageViewed]);
 
   return (
-    <div className="absolute inset-0 bg-gradient-to-b from-brown1 to-brown2 text-beige">
+    <div className="absolute inset-0 bg-gradient-to-b from-brown1 to-brown2 text-beige select-none">
       <div className="absolute inset-0">
         <Profile />
         <ContentContainer />

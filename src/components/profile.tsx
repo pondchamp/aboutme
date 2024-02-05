@@ -141,6 +141,7 @@ export const Profile = () => {
         <Image
           src="img/me.jpg"
           alt="profile"
+          onDragStart={(event) => event.preventDefault()}
           width={
             layoutState.contentScrollTop < shrinkIconScrollTopBuffered
               ? classProps.imgHeight

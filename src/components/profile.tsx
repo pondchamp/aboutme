@@ -120,7 +120,7 @@ export const Profile = () => {
 
   return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className="z-10 absolute top-0 left-0 flex flex-col items-center justify-center"
+      className="z-20 absolute top-0 left-0 flex flex-col items-center justify-center"
       style={{
         fontSize: initFontSize,
         gap: initFlexGap,

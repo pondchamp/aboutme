@@ -1,55 +1,23 @@
-import { animate } from "framer-motion";
-import { createRef, useEffect } from "react";
-import { Scrollbars } from "react-custom-scrollbars-2";
-import { shallowEqual } from "react-redux";
-
-import { useAppDispatch, useAppSelector } from "@/hooks";
-import {
-  LayoutAnimState,
-  SetContentScrollTop,
-  SetLayoutAnimState,
-} from "@/slice/LayoutSlice";
-
 export const Content = () => {
-  const dispatch = useAppDispatch();
-  const contentRef = createRef<HTMLDivElement>();
-  const layoutState = useAppSelector((state) => state.layout, shallowEqual);
-
-  // content mount
-  useEffect(() => {
-    if (
-      !contentRef.current ||
-      layoutState.layoutAnimState != LayoutAnimState.CONTENT_MOUNT_READY
-    ) {
-      return;
-    }
-
-    animate(
-      contentRef.current,
-      { opacity: [0, 1] },
-      {
-        onComplete: () => {
-          dispatch(SetLayoutAnimState(LayoutAnimState.COMPLETED));
-        },
-        type: "keyframes",
-      }
-    );
-  }, [dispatch, layoutState.layoutAnimState, contentRef]);
-
-  return layoutState.layoutAnimState == LayoutAnimState.COMPLETED ||
-    layoutState.layoutAnimState == LayoutAnimState.CONTENT_MOUNT_READY ? (
-    <div className="absolute inset-0" ref={contentRef}>
-      <Scrollbars
-        onScrollFrame={({ scrollTop }) =>
-          dispatch(SetContentScrollTop(scrollTop))
-        }
-      >
-        <div className="w-full h-[1000px] flex items-center justify-center">
-          <span className="text-2xl font-bold">🚧 Under Construction 🚧</span>
-        </div>
-      </Scrollbars>
+  return (
+    <div className="flex flex-col gap-28">
+      <div>
+        <p className="text-2xl font-bold text-center">Summary</p>
+        <br />
+        <p className="text-sm md:text-base text-justify">
+          <b>The 360° Perceptionist</b>, experienced in supercharging
+          engineering team productivity and bridging the gap between emerging
+          technology and business application. Proven track record for artfully
+          managing long-term projects, bringing the rigor and grit necessary to
+          achieve strategic success. Previous areas of focus in ad bidding
+          systems, full-stack engineering, and corporate fraud investigations.
+          Reputation for building and leading teams to launch new products while
+          translating business problems into practical technological solutions.
+        </p>
+      </div>
+      <div className="text-2xl font-bold text-center">
+        🚧 Under Construction 🚧
+      </div>
     </div>
-  ) : (
-    <></>
   );
 };

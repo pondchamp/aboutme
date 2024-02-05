@@ -1,7 +1,7 @@
 import { animate } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { createRef, useEffect } from "react";
+import { createRef, useEffect, useMemo } from "react";
 import { shallowEqual } from "react-redux";
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -27,6 +27,16 @@ const Title = dynamic(
   { ssr: false }
 );
 
+interface ClassProps {
+  fontSize: string;
+  gap: string;
+  height: string;
+  imgHeight: number;
+  imgWidth: number;
+  lineHeight: string;
+  width: string;
+}
+
 export const Profile = () => {
   const { width, height } = useViewport();
   const dispatch = useAppDispatch();
@@ -38,35 +48,30 @@ export const Profile = () => {
   const profileIconSizeSm = 50;
   const shrinkIconScrollTop = 100;
   const shrinkIconScrollTopBuffered = shrinkIconScrollTop - 70;
-  const {
-    initWidth,
-    initHeight,
-    initImgWidth,
-    initImgHeight,
-    initFontSize,
-    initLineHeight,
-    initFlexGap,
-  } =
-    layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
-    layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
-      ? {
-          initFlexGap: "16px",
-          initFontSize: "30px",
-          initHeight: "100%",
-          initImgHeight: 120,
-          initImgWidth: 120,
-          initLineHeight: "36px",
-          initWidth: "100%",
-        }
-      : {
-          initFlexGap: profileRefFinal.gap,
-          initFontSize: profileRefFinal.fontSize,
-          initHeight: profileRefFinal.height,
-          initImgHeight: profileImgRefFinal.height,
-          initImgWidth: profileImgRefFinal.width,
-          initLineHeight: profileRefFinal.lineHeight,
-          initWidth: profileRefFinal.width,
-        };
+  const classProps: ClassProps = useMemo(
+    () =>
+      layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
+      layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
+        ? {
+            fontSize: "30px",
+            gap: "16px",
+            height: "100%",
+            imgHeight: 120,
+            imgWidth: 120,
+            lineHeight: "36px",
+            width: "100%",
+          }
+        : {
+            fontSize: profileRefFinal.fontSize,
+            gap: profileRefFinal.gap,
+            height: profileRefFinal.height,
+            imgHeight: profileImgRefFinal.height,
+            imgWidth: profileImgRefFinal.width,
+            lineHeight: profileRefFinal.lineHeight,
+            width: profileRefFinal.width,
+          },
+    [layoutState.layoutAnimState]
+  );
 
   // Post profile mount
   useEffect(() => {
@@ -81,18 +86,18 @@ export const Profile = () => {
     animate(
       profileImgRef.current,
       {
-        height: [initImgHeight, profileImgRefFinal.height],
-        width: [initImgWidth, profileImgRefFinal.width],
+        height: [classProps.imgHeight, profileImgRefFinal.height],
+        width: [classProps.imgWidth, profileImgRefFinal.width],
       },
       { type: "keyframes" }
     );
     animate(
       profileRef.current,
       {
-        fontSize: [initFontSize, profileRefFinal.fontSize],
-        gap: [initFlexGap, profileRefFinal.gap],
+        fontSize: [classProps.fontSize, profileRefFinal.fontSize],
+        gap: [classProps.gap, profileRefFinal.gap],
         height: [`${height}px`, profileRefFinal.height],
-        lineHeight: [initLineHeight, profileRefFinal.lineHeight],
+        lineHeight: [classProps.lineHeight, profileRefFinal.lineHeight],
         width: [`${width}px`, profileRefFinal.width],
       },
       {
@@ -106,11 +111,7 @@ export const Profile = () => {
   }, [
     dispatch,
     height,
-    initFlexGap,
-    initFontSize,
-    initImgHeight,
-    initImgWidth,
-    initLineHeight,
+    classProps,
     layoutState.layoutAnimState,
     profileImgRef,
     profileRef,
@@ -122,27 +123,17 @@ export const Profile = () => {
     <div
       className="z-20 absolute top-0 left-0 flex flex-col items-center justify-center"
       style={{
-        fontSize: initFontSize,
-        gap: initFlexGap,
-        height: initHeight,
-        width: initWidth,
+        fontSize: classProps.fontSize,
+        gap: classProps.gap,
+        height: classProps.height,
+        width: classProps.width,
       }}
       ref={profileRef}
     >
       <div
         style={{
-          height: initImgHeight,
-          opacity:
-            layoutState.contentScrollTop < shrinkIconScrollTopBuffered
-              ? 1
-              : Math.max(
-                  0.6,
-                  1 -
-                    (layoutState.contentScrollTop -
-                      shrinkIconScrollTopBuffered) /
-                      100
-                ),
-          width: initImgWidth,
+          height: classProps.imgHeight,
+          width: classProps.imgWidth,
           zIndex: 20,
         }}
         ref={profileImgRef}
@@ -152,14 +143,14 @@ export const Profile = () => {
           alt="profile"
           width={
             layoutState.contentScrollTop < shrinkIconScrollTopBuffered
-              ? initImgHeight
+              ? classProps.imgHeight
               : Math.max(
                   profileIconSizeSm,
-                  initImgHeight -
+                  classProps.imgHeight -
                     (layoutState.contentScrollTop - shrinkIconScrollTopBuffered)
                 )
           }
-          height={initImgHeight}
+          height={classProps.imgHeight}
           priority
           style={{
             borderRadius: 32,

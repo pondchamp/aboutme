@@ -43,9 +43,7 @@ export const ContentContainer = () => {
     <div className="absolute inset-0" ref={contentRef}>
       <div className="z-10 fixed inset-x-0 top-0 h-40 bg-gradient-to-b from-brown1 from-10% to-transparent"></div>
       <Scrollbars
-        onScrollFrame={({ scrollTop }) =>
-          dispatch(SetContentScrollTop(scrollTop))
-        }
+        onUpdate={({ scrollTop }) => dispatch(SetContentScrollTop(scrollTop))}
       >
         <div className="absolute left-1/2 transform -translate-x-1/2 top-0 h-[1000px] w-full max-w-[800px] flex justify-center px-4 pt-40 pb-4">
           <Content />

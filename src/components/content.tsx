@@ -12,21 +12,22 @@ const JobHistory: JobHistoryEntry[] = [
   {
     accomplishments: [
       <>
-        Developed LLM-backed sales pitching tool for TikTok&apos;s salesforce,
-        automating pitching process within first week of launch for large
-        consumer brands and capturing $10MM+ in total ad campaign spend.
+        Developed LLM-backed sales pitch&shy;ing tool for TikTok&apos;s
+        sales&shy;force, automating pitch&shy;ing process within first week of
+        launch for large consumer brands and capturing $10MM+ in total ad
+        campaign spend.
       </>,
     ],
     company: "TikTok",
     description: (
       <>
         Built tools and solutions for Branded Mission, TikTok&apos;s influencer
-        marketplace and premium advertisement product. Led multiple engineering
-        initiatives to improve stability and efficiency of auction bidding and
-        ad delivery mechanisms. Responsible for building next-gen sales team
-        experience with Generative AI technology to drive compelling brand
-        narratives and boost marketplace demand by onboarding more brands to
-        Branded Mission.
+        market&shy;place and premium advert&shy;isement product. Led multiple
+        engineering initiatives to improve stability and efficiency of auction
+        bidding and ad delivery mechanisms. Responsible for build&shy;ing
+        next-gen sales team experience with Generative AI technology to drive
+        compelling brand narratives and boost market&shy;place demand by
+        onboarding more brands to Branded Mission.
       </>
     ),
     startYear: 2022,
@@ -36,29 +37,30 @@ const JobHistory: JobHistoryEntry[] = [
 
 export const Content = () => {
   return (
-    <div className="flex flex-col gap-14">
+    <div className="flex flex-col gap-12">
       <div>
         <p className="text-2xl font-bold text-center">Summary</p>
         <br />
-        <p className="text-sm md:text-base md:text-justify">
-          <b>The 360° Perceptionist</b>, experienced in supercharging
-          engineering team productivity and bridging the gap between emerging
-          technology and business application. Proven track record for artfully
-          managing long-term projects, bringing the rigor and grit necessary to
-          achieve strategic success. Previous areas of focus in ad bidding
-          systems, full-stack engineering, and corporate fraud investigations.
-          Reputation for building and leading teams to launch new products while
-          translating business problems into practical technological solutions.
+        <p className="text-sm md:text-base text-justify hyphens-manual">
+          <b>The 360° Perceptionist</b>, experienced in super&shy;charging
+          engineering team product&shy;ivity and bridging the gap between
+          emerging technology and business application. Proven track record for
+          artfully managing long-term projects, bringing the rigor and grit
+          necessary to achieve strategic success. Previous areas of focus in ad
+          bidding systems, full-stack engineering, and corporate fraud
+          invest&shy;igations. Reputation for building and leading teams to
+          launch new products while translating business problems into practical
+          techno&shy;logical solutions.
         </p>
       </div>
       <div>
         <p className="text-2xl font-bold text-center pb-8">
           Professional Experience
         </p>
-        <div className="text-sm md:text-base md:text-justify">
+        <div className="text-sm md:text-base text-justify hyphens-manual">
           {JobHistory.map((job, i) => (
             <div key={`job-history-${i}`}>
-              <div className="font-bold">
+              <div className="text-lg font-bold">
                 <div className="flex justify-between">
                   <div>{job.company}</div>
                   <div>
@@ -67,11 +69,13 @@ export const Content = () => {
                 </div>
                 <div>{job.title}</div>
               </div>
-              <div className="pt-8">{job.description}</div>
+              <div className="pt-4">{job.description}</div>
               {job.accomplishments.length > 0 && (
                 <>
-                  <div className="pt-8 font-bold text-lg">Accomplishments</div>
-                  <ul>
+                  <div className="pt-4 pb-2 font-bold text-lg">
+                    Accomplishments
+                  </div>
+                  <ul className="list-disc pl-4">
                     {job.accomplishments.map((acc, j) => (
                       <li key={`job-history-${i}-acc-${j}`}>{acc}</li>
                     ))}

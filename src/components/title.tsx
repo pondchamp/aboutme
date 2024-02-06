@@ -46,14 +46,20 @@ export const Title = () => {
 
   return layoutState.layoutAnimState == LayoutAnimState.NOT_MOUNTED ? (
     <></>
-  ) : layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ? (
-    <>
-      <span className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
-        <Typewriter onInit={animate} options={{}} />
-      </span>
-      <span className={fixedText ? "block" : "hidden"}>{fixedText}</span>
-    </>
   ) : (
-    <>{MyName}</>
+    <>
+      <h1 className="text-center">
+        {layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ? (
+          <>
+            <span className={`${fixedText ? "hidden" : "block"}`}>
+              <Typewriter onInit={animate} options={{}} />
+            </span>
+            <span className={fixedText ? "block" : "hidden"}>{fixedText}</span>
+          </>
+        ) : (
+          <>{MyName}</>
+        )}
+      </h1>
+    </>
   );
 };

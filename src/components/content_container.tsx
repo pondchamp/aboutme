@@ -48,7 +48,7 @@ export const ContentContainer = () => {
       >
         <ScrollPassthrough
           ref={contentRef}
-          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-40 pb-20"
+          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20"
         >
           <Content />
         </ScrollPassthrough>

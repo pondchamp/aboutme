@@ -9,12 +9,24 @@ import { usePageViewed } from "@/hooks/usePageViewed";
 import { useViewport } from "@/hooks/useViewport";
 import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
 
-const profileRefFinal = {
-  fontSize: "20px",
-  gap: "8px",
+const contianerYRefFinal = {
   height: "160px",
   lineHeight: "32px",
+};
+
+const contianerXRefFinal = {
+  width: "800px",
+};
+
+const profileRefFinal = {
+  gap: "8px",
   width: "120px",
+};
+
+const profileTxtRefFinal = {
+  fontSize: "20px",
+  transform: "translateX(280px) translateY(-80px) translateZ(0px)",
+  width: "85px",
 };
 
 const profileImgRefFinal = {
@@ -35,18 +47,25 @@ interface ClassProps {
   imgHeight: number;
   imgWidth: number;
   lineHeight: string;
+  txtTansform: string;
+  txtWidth: string;
 }
 
 export const Profile = () => {
   const { width, height } = useViewport();
   const dispatch = useAppDispatch();
   const [_, setPageViewed] = usePageViewed();
+  const containerYRef = createRef<HTMLDivElement>();
+  const containerXRef = createRef<HTMLDivElement>();
   const profileRef = createRef<HTMLDivElement>();
   const profileImgRef = createRef<HTMLDivElement>();
+  const profileTitleRef = createRef<HTMLDivElement>();
+  const profileSubtitleRef = createRef<HTMLDivElement>();
+  const profileTxtRef = createRef<HTMLDivElement>();
   const layoutState = useAppSelector((state) => state.layout, shallowEqual);
 
   const profileIconSizeSm = 50;
-  const shrinkIconScrollTop = 100;
+  const shrinkIconScrollTop = 150;
   const shrinkIconScrollTopBuffered = shrinkIconScrollTop - 70;
   const classProps: ClassProps = useMemo(
     () =>
@@ -60,15 +79,21 @@ export const Profile = () => {
             imgHeight: 120,
             imgWidth: 120,
             lineHeight: "36px",
+            profileWidth: "100%",
+            txtTansform: "translateX(0px) translateY(0px) translateZ(0px)",
+            txtWidth: "340px",
           }
         : {
-            containerHeight: profileRefFinal.height,
-            containerWidth: profileRefFinal.width,
-            fontSize: profileRefFinal.fontSize,
+            containerHeight: contianerYRefFinal.height,
+            containerWidth: contianerXRefFinal.width,
+            fontSize: profileTxtRefFinal.fontSize,
             gap: profileRefFinal.gap,
             imgHeight: profileImgRefFinal.height,
             imgWidth: profileImgRefFinal.width,
-            lineHeight: profileRefFinal.lineHeight,
+            lineHeight: contianerYRefFinal.lineHeight,
+            profileWidth: profileRefFinal.width,
+            txtTansform: profileTxtRefFinal.transform,
+            txtWidth: profileTxtRefFinal.width,
           },
     [layoutState.layoutAnimState]
   );
@@ -76,13 +101,41 @@ export const Profile = () => {
   // Post profile mount
   useEffect(() => {
     if (
-      !profileImgRef.current ||
       !profileRef.current ||
+      !profileImgRef.current ||
+      !profileTxtRef.current ||
+      !profileTitleRef.current ||
+      !profileSubtitleRef.current ||
+      !containerXRef.current ||
+      !containerYRef.current ||
       layoutState.layoutAnimState != LayoutAnimState.PROFILE_MOUNTED
     ) {
       return;
     }
 
+    animate(
+      profileTxtRef.current,
+      {
+        x: [0, 280],
+        y: [0, -80],
+      },
+      { type: "keyframes" }
+    );
+    animate(
+      profileTitleRef.current,
+      {
+        fontSize: [classProps.fontSize, profileTxtRefFinal.fontSize],
+        width: [classProps.txtWidth, profileTxtRefFinal.width],
+      },
+      { type: "keyframes" }
+    );
+    animate(
+      profileSubtitleRef.current,
+      {
+        opacity: [0, 1],
+      },
+      { type: "keyframes" }
+    );
     animate(
       profileImgRef.current,
       {
@@ -94,11 +147,23 @@ export const Profile = () => {
     animate(
       profileRef.current,
       {
-        fontSize: [classProps.fontSize, profileRefFinal.fontSize],
         gap: [classProps.gap, profileRefFinal.gap],
-        height: [`${height}px`, profileRefFinal.height],
-        lineHeight: [classProps.lineHeight, profileRefFinal.lineHeight],
         width: [`${width}px`, profileRefFinal.width],
+      },
+      { type: "keyframes" }
+    );
+    animate(
+      containerXRef.current,
+      {
+        width: [`${width}px`, contianerXRefFinal.width],
+      },
+      { type: "keyframes" }
+    );
+    animate(
+      containerYRef.current,
+      {
+        height: [`${height}px`, contianerYRefFinal.height],
+        lineHeight: [classProps.lineHeight, contianerYRefFinal.lineHeight],
       },
       {
         onComplete: () => {
@@ -113,35 +178,41 @@ export const Profile = () => {
     height,
     classProps,
     layoutState.layoutAnimState,
-    profileImgRef,
     profileRef,
+    profileImgRef,
+    profileTitleRef,
+    profileSubtitleRef,
+    profileTxtRef,
+    containerXRef,
+    containerYRef,
     setPageViewed,
     width,
   ]);
 
   return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className="z-20 absolute top-0 inset-x-0 flex justify-center"
+      className="w-full z-20 absolute inset-x-0 flex items-center justify-center"
       style={{
         fontSize: classProps.fontSize,
         height: classProps.containerHeight,
-        width: classProps.containerWidth,
       }}
-      ref={profileRef}
+      ref={containerYRef}
     >
       <div
         style={{
-          height: "100%",
-          width: "800px",
+          width: classProps.containerWidth,
         }}
+        ref={containerXRef}
       >
         <div
-          className="w-full h-full flex flex-col items-center justify-center"
+          className="flex flex-col items-center justify-center pt-6"
           style={{
             gap: classProps.gap,
           }}
+          ref={profileRef}
         >
           <div
+            className="w-fit h-full"
             style={{
               height: classProps.imgHeight,
               width: classProps.imgWidth,
@@ -170,21 +241,43 @@ export const Profile = () => {
               }}
             />
           </div>
-          <div className="h-9 text-center flex items-center justify-center">
-            <h1
+          <div
+            style={{
+              opacity: Math.max(
+                0,
+                1 -
+                  (layoutState.contentScrollTop / (shrinkIconScrollTop + 100)) *
+                    3.5
+              ),
+              paddingRight: Math.min(200, layoutState.contentScrollTop * 3.5),
+            }}
+          >
+            <div
               style={{
-                opacity: Math.max(
-                  0,
-                  1 - (layoutState.contentScrollTop / shrinkIconScrollTop) * 3.5
-                ),
-                paddingBottom: Math.min(
-                  150,
-                  layoutState.contentScrollTop * 1.5
-                ),
+                transform: classProps.txtTansform,
               }}
+              ref={profileTxtRef}
             >
-              <Title />
-            </h1>
+              <div
+                style={{
+                  width: classProps.txtWidth,
+                }}
+                ref={profileTitleRef}
+              >
+                <Title />
+              </div>
+              {layoutState.layoutAnimState != LayoutAnimState.MOUNT_STARTED && (
+                <div
+                  className="whitespace-nowrap text-sm"
+                  style={{
+                    opacity: 0,
+                  }}
+                  ref={profileSubtitleRef}
+                >
+                  Brand Advertising - Generative AI - Economic Analysis
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

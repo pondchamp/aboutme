@@ -1,9 +1,9 @@
 import { NextPage } from "next";
-import Link from "next/link";
 import { useEffect } from "react";
 import { shallowEqual } from "react-redux";
 
 import { ContentContainer } from "@/components/content_container";
+import { Footer } from "@/components/footer";
 import { Profile } from "@/components/profile";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { usePageViewed } from "@/hooks/usePageViewed";
@@ -33,10 +33,7 @@ const Home: NextPage = () => {
       <div className="absolute inset-0">
         <Profile />
         <ContentContainer />
-        <div className="z-20 absolute top-4 right-4 font-semibold flex flex-col gap-1 text-right">
-          <Link href="https://www.linkedin.com/in/julianblair">LinkedIn</Link>
-          <Link href="https://github.com/pondchamp/aboutme">GitHub</Link>
-        </div>
+        <Footer />
       </div>
     </div>
   );

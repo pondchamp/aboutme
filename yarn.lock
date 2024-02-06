@@ -14,6 +14,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.23.8":
+  version: 7.23.9
+  resolution: "@babel/runtime@npm:7.23.9"
+  dependencies:
+    regenerator-runtime: ^0.14.0
+  checksum: 6bbebe8d27c0c2dd275d1ac197fc1a6c00e18dab68cc7aaff0adc3195b45862bae9c4cc58975629004b0213955b2ed91e99eccb3d9b39cabea246c657323d667
+  languageName: node
+  linkType: hard
+
 "@emotion/is-prop-valid@npm:^0.8.2":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -662,6 +671,7 @@ __metadata:
     react-dom: ^18.2.0
     react-parallax-tilt: ^1.7.151
     react-redux: ^9.1.0
+    react-social-icons: ^6.10.0
     react-tooltip: ^5.21.6
     redux: ^4.2.1
     tailwindcss: ^3.3.1
@@ -3825,6 +3835,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-social-icons@npm:^6.10.0":
+  version: 6.10.0
+  resolution: "react-social-icons@npm:6.10.0"
+  dependencies:
+    "@babel/runtime": ^7.23.8
+    react: ^18.2.0
+    react-dom: ^18.2.0
+  peerDependencies:
+    react: 15.x.x || 16.x.x || 17.x.x || 18.x.x
+    react-dom: 15.x.x || 16.x.x || 17.x.x || 18.x.x
+  checksum: 38d7c924eaba074314282ff55bb5d9efe76fc8dbcf53de6bdad650edd79db8dc044a58431fa96e5238e25547877992e22396d1cd44dfe6a357170bf0b3f5679e
+  languageName: node
+  linkType: hard
+
 "react-tooltip@npm:^5.21.6":
   version: 5.21.6
   resolution: "react-tooltip@npm:5.21.6"
@@ -3905,6 +3929,13 @@ __metadata:
   version: 0.13.11
   resolution: "regenerator-runtime@npm:0.13.11"
   checksum: 27481628d22a1c4e3ff551096a683b424242a216fee44685467307f14d58020af1e19660bf2e26064de946bad7eff28950eae9f8209d55723e2d9351e632bbb4
+  languageName: node
+  linkType: hard
+
+"regenerator-runtime@npm:^0.14.0":
+  version: 0.14.1
+  resolution: "regenerator-runtime@npm:0.14.1"
+  checksum: 9f57c93277b5585d3c83b0cf76be47b473ae8c6d9142a46ce8b0291a04bb2cf902059f0f8445dcabb3fb7378e5fe4bb4ea1e008876343d42e46d3b484534ce38
   languageName: node
   linkType: hard
 

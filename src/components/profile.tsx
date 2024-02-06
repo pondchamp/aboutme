@@ -28,13 +28,13 @@ const Title = dynamic(
 );
 
 interface ClassProps {
+  containerHeight: string;
+  containerWidth: string;
   fontSize: string;
   gap: string;
-  height: string;
   imgHeight: number;
   imgWidth: number;
   lineHeight: string;
-  width: string;
 }
 
 export const Profile = () => {
@@ -53,22 +53,22 @@ export const Profile = () => {
       layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
       layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
         ? {
+            containerHeight: "100%",
+            containerWidth: "100%",
             fontSize: "30px",
             gap: "16px",
-            height: "100%",
             imgHeight: 120,
             imgWidth: 120,
             lineHeight: "36px",
-            width: "100%",
           }
         : {
+            containerHeight: profileRefFinal.height,
+            containerWidth: profileRefFinal.width,
             fontSize: profileRefFinal.fontSize,
             gap: profileRefFinal.gap,
-            height: profileRefFinal.height,
             imgHeight: profileImgRefFinal.height,
             imgWidth: profileImgRefFinal.width,
             lineHeight: profileRefFinal.lineHeight,
-            width: profileRefFinal.width,
           },
     [layoutState.layoutAnimState]
   );
@@ -121,55 +121,72 @@ export const Profile = () => {
 
   return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className="z-20 absolute top-0 left-0 flex flex-col items-center justify-center"
+      className="z-20 absolute top-0 inset-x-0 flex justify-center"
       style={{
         fontSize: classProps.fontSize,
-        gap: classProps.gap,
-        height: classProps.height,
-        width: classProps.width,
+        height: classProps.containerHeight,
+        width: classProps.containerWidth,
       }}
       ref={profileRef}
     >
       <div
         style={{
-          height: classProps.imgHeight,
-          width: classProps.imgWidth,
-          zIndex: 20,
+          height: "100%",
+          width: "800px",
         }}
-        ref={profileImgRef}
       >
-        <Image
-          src="img/me.jpg"
-          alt="profile"
-          onDragStart={(event) => event.preventDefault()}
-          width={
-            layoutState.contentScrollTop < shrinkIconScrollTopBuffered
-              ? classProps.imgHeight
-              : Math.max(
-                  profileIconSizeSm,
-                  classProps.imgHeight -
-                    (layoutState.contentScrollTop - shrinkIconScrollTopBuffered)
-                )
-          }
-          height={classProps.imgHeight}
-          priority
+        <div
+          className="w-full h-full flex flex-col items-center justify-center"
           style={{
-            borderRadius: 32,
-          }}
-        />
-      </div>
-      <div className="w-full h-9 text-center flex items-end justify-center">
-        <h1
-          style={{
-            opacity: Math.max(
-              0,
-              1 - (layoutState.contentScrollTop / shrinkIconScrollTop) * 3.5
-            ),
-            paddingBottom: Math.min(150, layoutState.contentScrollTop * 1.5),
+            gap: classProps.gap,
           }}
         >
-          <Title />
-        </h1>
+          <div
+            style={{
+              height: classProps.imgHeight,
+              width: classProps.imgWidth,
+              zIndex: 20,
+            }}
+            ref={profileImgRef}
+          >
+            <Image
+              src="img/me.jpg"
+              alt="profile"
+              onDragStart={(event) => event.preventDefault()}
+              width={
+                layoutState.contentScrollTop < shrinkIconScrollTopBuffered
+                  ? classProps.imgHeight
+                  : Math.max(
+                      profileIconSizeSm,
+                      classProps.imgHeight -
+                        (layoutState.contentScrollTop -
+                          shrinkIconScrollTopBuffered)
+                    )
+              }
+              height={classProps.imgHeight}
+              priority
+              style={{
+                borderRadius: 32,
+              }}
+            />
+          </div>
+          <div className="h-9 text-center flex items-center justify-center">
+            <h1
+              style={{
+                opacity: Math.max(
+                  0,
+                  1 - (layoutState.contentScrollTop / shrinkIconScrollTop) * 3.5
+                ),
+                paddingBottom: Math.min(
+                  150,
+                  layoutState.contentScrollTop * 1.5
+                ),
+              }}
+            >
+              <Title />
+            </h1>
+          </div>
+        </div>
       </div>
     </div>
   ) : (

@@ -61,6 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"],\
             ["react-parallax-tilt", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.7.151"],\
             ["react-redux", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:9.1.0"],\
+            ["react-social-icons", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:6.10.0"],\
             ["react-tooltip", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:5.21.6"],\
             ["redux", "npm:4.2.1"],\
             ["tailwindcss", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:3.3.1"],\
@@ -76,6 +77,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@babel/runtime", "npm:7.21.0"],\
             ["regenerator-runtime", "npm:0.13.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:7.23.9", {\
+          "packageLocation": "./.yarn/cache/@babel-runtime-npm-7.23.9-3b96e23cc2-6bbebe8d27.zip/node_modules/@babel/runtime/",\
+          "packageDependencies": [\
+            ["@babel/runtime", "npm:7.23.9"],\
+            ["regenerator-runtime", "npm:0.14.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -969,6 +978,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"],\
             ["react-parallax-tilt", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:1.7.151"],\
             ["react-redux", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:9.1.0"],\
+            ["react-social-icons", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:6.10.0"],\
             ["react-tooltip", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:5.21.6"],\
             ["redux", "npm:4.2.1"],\
             ["tailwindcss", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:3.3.1"],\
@@ -4843,6 +4853,33 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["react-social-icons", [\
+        ["npm:6.10.0", {\
+          "packageLocation": "./.yarn/cache/react-social-icons-npm-6.10.0-d5a672748d-38d7c924ea.zip/node_modules/react-social-icons/",\
+          "packageDependencies": [\
+            ["react-social-icons", "npm:6.10.0"]\
+          ],\
+          "linkType": "SOFT"\
+        }],\
+        ["virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:6.10.0", {\
+          "packageLocation": "./.yarn/__virtual__/react-social-icons-virtual-00da29e7aa/0/cache/react-social-icons-npm-6.10.0-d5a672748d-38d7c924ea.zip/node_modules/react-social-icons/",\
+          "packageDependencies": [\
+            ["react-social-icons", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:6.10.0"],\
+            ["@babel/runtime", "npm:7.23.9"],\
+            ["@types/react", "npm:18.0.37"],\
+            ["@types/react-dom", "npm:18.0.11"],\
+            ["react", "npm:18.2.0"],\
+            ["react-dom", "virtual:69e6fb2d49841350a3763870478a4fd975e49466bb071d2f83baa007f7ec0f53b50bdd50e4ef0053cd94263983b7f3c228244f6076cfaeb6fab0939058eb3d79#npm:18.2.0"]\
+          ],\
+          "packagePeers": [\
+            "@types/react-dom",\
+            "@types/react",\
+            "react-dom",\
+            "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["react-tooltip", [\
         ["npm:5.21.6", {\
           "packageLocation": "./.yarn/cache/react-tooltip-npm-5.21.6-e16ec90008-99c826f8a9.zip/node_modules/react-tooltip/",\
@@ -4947,6 +4984,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.13.11-90bf536060-27481628d2.zip/node_modules/regenerator-runtime/",\
           "packageDependencies": [\
             ["regenerator-runtime", "npm:0.13.11"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
+        ["npm:0.14.1", {\
+          "packageLocation": "./.yarn/cache/regenerator-runtime-npm-0.14.1-a6c97c609a-9f57c93277.zip/node_modules/regenerator-runtime/",\
+          "packageDependencies": [\
+            ["regenerator-runtime", "npm:0.14.1"]\
           ],\
           "linkType": "HARD"\
         }]\

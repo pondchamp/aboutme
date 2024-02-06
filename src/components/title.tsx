@@ -51,7 +51,7 @@ export const Title = () => {
       <h1 className="text-center">
         {layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ? (
           <>
-            <span className={`${fixedText ? "hidden" : "block"}`}>
+            <span className={`pl-[26px] ${fixedText ? "hidden" : "block"}`}>
               <Typewriter onInit={animate} options={{}} />
             </span>
             <span className={fixedText ? "block" : "hidden"}>{fixedText}</span>

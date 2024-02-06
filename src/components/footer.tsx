@@ -7,15 +7,17 @@ export const Footer = () => {
     style: { height: 35, width: 35 },
   };
   return (
-    <div className="z-20 p-3 fixed bottom-0 inset-x-0 h-20 bg-gradient-to-t from-brown2 from-60% to-transparent flex items-end justify-end gap-3">
-      <SocialIcon
-        url="https://linkedin.com/in/julianblair"
-        {...socialIconStyle}
-      />
-      <SocialIcon
-        url="https://github.com/pondchamp/aboutme"
-        {...socialIconStyle}
-      />
+    <div className="z-20 fixed bottom-0 inset-x-0 h-20 bg-gradient-to-t from-brown2 from-60% to-transparent flex items-end">
+      <div className="p-3 absolute left-1/2 transform -translate-x-1/2 w-full max-w-[800px] flex justify-end gap-3">
+        <SocialIcon
+          url="https://linkedin.com/in/julianblair"
+          {...socialIconStyle}
+        />
+        <SocialIcon
+          url="https://github.com/pondchamp/aboutme"
+          {...socialIconStyle}
+        />
+      </div>
     </div>
   );
 };

@@ -25,8 +25,11 @@ const profileRefFinal = {
 
 const profileTxtRefFinal = {
   fontSize: "20px",
-  transform: "translateX(280px) translateY(-80px) translateZ(0px)",
-  width: "85px",
+  profileWidth: "85px",
+  transform: "translateX(280px) translateY(-90px) translateZ(0px)",
+  width: "450px",
+  x: 280,
+  y: -80,
 };
 
 const profileImgRefFinal = {
@@ -47,6 +50,9 @@ interface ClassProps {
   imgHeight: number;
   imgWidth: number;
   lineHeight: string;
+  profileTxtWidth: string;
+  profileWidth: string;
+  subtitleOpacity: number;
   txtTansform: string;
   txtWidth: string;
 }
@@ -72,16 +78,18 @@ export const Profile = () => {
       layoutState.layoutAnimState == LayoutAnimState.MOUNT_STARTED ||
       layoutState.layoutAnimState == LayoutAnimState.PROFILE_MOUNTED
         ? {
-            containerHeight: "100%",
-            containerWidth: "100%",
+            containerHeight: `${height}px`,
+            containerWidth: `${width}px`,
             fontSize: "30px",
             gap: "16px",
             imgHeight: 120,
             imgWidth: 120,
             lineHeight: "36px",
-            profileWidth: "100%",
+            profileTxtWidth: "450px",
+            profileWidth: `${width}px`,
+            subtitleOpacity: 0,
             txtTansform: "translateX(0px) translateY(0px) translateZ(0px)",
-            txtWidth: "340px",
+            txtWidth: "450px",
           }
         : {
             containerHeight: contianerYRefFinal.height,
@@ -91,11 +99,13 @@ export const Profile = () => {
             imgHeight: profileImgRefFinal.height,
             imgWidth: profileImgRefFinal.width,
             lineHeight: contianerYRefFinal.lineHeight,
+            profileTxtWidth: profileTxtRefFinal.profileWidth,
             profileWidth: profileRefFinal.width,
+            subtitleOpacity: 1,
             txtTansform: profileTxtRefFinal.transform,
             txtWidth: profileTxtRefFinal.width,
           },
-    [layoutState.layoutAnimState]
+    [height, layoutState.layoutAnimState, width]
   );
 
   // Post profile mount
@@ -116,25 +126,28 @@ export const Profile = () => {
     animate(
       profileTxtRef.current,
       {
+        width: [classProps.txtWidth, profileTxtRefFinal.width],
         x: [0, 280],
         y: [0, -80],
       },
       { type: "keyframes" }
     );
+    const subRef = profileSubtitleRef.current;
     animate(
       profileTitleRef.current,
       {
         fontSize: [classProps.fontSize, profileTxtRefFinal.fontSize],
-        width: [classProps.txtWidth, profileTxtRefFinal.width],
+        width: [classProps.profileTxtWidth, profileTxtRefFinal.profileWidth],
       },
       { type: "keyframes" }
-    );
-    animate(
-      profileSubtitleRef.current,
-      {
-        opacity: [0, 1],
-      },
-      { type: "keyframes" }
+    ).then(() =>
+      animate(
+        subRef,
+        {
+          opacity: [0, 1],
+        },
+        { type: "keyframes" }
+      )
     );
     animate(
       profileImgRef.current,
@@ -148,21 +161,21 @@ export const Profile = () => {
       profileRef.current,
       {
         gap: [classProps.gap, profileRefFinal.gap],
-        width: [`${width}px`, profileRefFinal.width],
+        width: [classProps.profileWidth, profileRefFinal.width],
       },
       { type: "keyframes" }
     );
     animate(
       containerXRef.current,
       {
-        width: [`${width}px`, contianerXRefFinal.width],
+        width: [classProps.containerWidth, contianerXRefFinal.width],
       },
       { type: "keyframes" }
     );
     animate(
       containerYRef.current,
       {
-        height: [`${height}px`, contianerYRefFinal.height],
+        height: [classProps.containerHeight, contianerYRefFinal.height],
         lineHeight: [classProps.lineHeight, contianerYRefFinal.lineHeight],
       },
       {
@@ -191,23 +204,24 @@ export const Profile = () => {
 
   return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className="w-full z-20 absolute inset-x-0 flex items-center justify-center"
+      className="w-full z-20 absolute inset-x-0 flex items-center justify-center overflow-hidden"
       style={{
-        fontSize: classProps.fontSize,
         height: classProps.containerHeight,
       }}
       ref={containerYRef}
     >
       <div
+        className="pt-12"
         style={{
           width: classProps.containerWidth,
         }}
         ref={containerXRef}
       >
         <div
-          className="flex flex-col items-center justify-center pt-6"
+          className="flex flex-col items-center justify-center"
           style={{
             gap: classProps.gap,
+            width: classProps.profileWidth,
           }}
           ref={profileRef}
         >
@@ -253,14 +267,17 @@ export const Profile = () => {
             }}
           >
             <div
+              className="h-[80px] flex flex-col justify-center"
               style={{
                 transform: classProps.txtTansform,
+                width: classProps.txtWidth,
               }}
               ref={profileTxtRef}
             >
               <div
                 style={{
-                  width: classProps.txtWidth,
+                  fontSize: classProps.fontSize,
+                  width: classProps.profileTxtWidth,
                 }}
                 ref={profileTitleRef}
               >
@@ -268,13 +285,14 @@ export const Profile = () => {
               </div>
               {layoutState.layoutAnimState != LayoutAnimState.MOUNT_STARTED && (
                 <div
-                  className="whitespace-nowrap text-sm"
+                  className="text-xs md:text-sm w-[170px] md:w-[450px]"
                   style={{
-                    opacity: 0,
+                    opacity: classProps.subtitleOpacity,
                   }}
                   ref={profileSubtitleRef}
                 >
-                  Brand Advertising - Generative AI - Economic Analysis
+                  Brand Advertising &#x2022; Generative AI &#x2022; Economic
+                  Analysis
                 </div>
               )}
             </div>

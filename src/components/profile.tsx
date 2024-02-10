@@ -71,6 +71,7 @@ export const Profile = () => {
   const layoutState = useAppSelector((state) => state.layout, shallowEqual);
 
   const profileIconSizeSm = 50;
+  const contentScrollTop = 10;
   const shrinkIconScrollTop = 150;
   const shrinkIconScrollTopBuffered = shrinkIconScrollTop - 70;
   const classProps: ClassProps = useMemo(
@@ -257,13 +258,23 @@ export const Profile = () => {
           </div>
           <div
             style={{
-              opacity: Math.max(
-                0,
-                1 -
-                  (layoutState.contentScrollTop / (shrinkIconScrollTop + 100)) *
-                    3.5
-              ),
-              paddingRight: Math.min(200, layoutState.contentScrollTop * 3.5),
+              opacity:
+                layoutState.contentScrollTop < contentScrollTop
+                  ? 1
+                  : Math.max(
+                      0,
+                      1 -
+                        ((layoutState.contentScrollTop - contentScrollTop) /
+                          (shrinkIconScrollTop + 40)) *
+                          3.5
+                    ),
+              paddingRight:
+                layoutState.contentScrollTop < contentScrollTop
+                  ? 0
+                  : Math.min(
+                      200,
+                      (layoutState.contentScrollTop - contentScrollTop) * 3.5
+                    ),
             }}
           >
             <div

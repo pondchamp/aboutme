@@ -3,8 +3,9 @@ import { createRef, useEffect } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { shallowEqual } from "react-redux";
 
+import { Footer } from "@/components/footer";
+import { Profile } from "@/components/profile";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import { ScrollPassthrough } from "@/layouts/ScrollPassthrough";
 import {
   LayoutAnimState,
   SetContentScrollTop,
@@ -42,17 +43,16 @@ export const ContentContainer = () => {
   return layoutState.layoutAnimState == LayoutAnimState.COMPLETED ||
     layoutState.layoutAnimState == LayoutAnimState.CONTENT_MOUNT_READY ? (
     <div className="absolute inset-0">
-      <div className="z-10 fixed inset-x-0 top-0 h-40 bg-gradient-to-b from-brown1 from-10% to-transparent"></div>
+      <div className="z-10 absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brown1 from-10% to-transparent"></div>
+      <Profile />
       <Scrollbars
         onUpdate={({ scrollTop }) => dispatch(SetContentScrollTop(scrollTop))}
       >
-        <ScrollPassthrough
-          ref={contentRef}
-          className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20"
-        >
+        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20">
           <Content />
-        </ScrollPassthrough>
+        </div>
       </Scrollbars>
+      <Footer />
     </div>
   ) : (
     <></>

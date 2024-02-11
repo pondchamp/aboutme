@@ -3,8 +3,6 @@ import { useEffect } from "react";
 import { shallowEqual } from "react-redux";
 
 import { ContentContainer } from "@/components/content_container";
-import { Footer } from "@/components/footer";
-import { Profile } from "@/components/profile";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { usePageViewed } from "@/hooks/usePageViewed";
 import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
@@ -30,11 +28,7 @@ const Home: NextPage = () => {
 
   return (
     <div className="absolute inset-0 bg-gradient-to-b from-brown1 to-brown2 text-beige select-none">
-      <div className="absolute inset-0">
-        <Profile />
-        <ContentContainer />
-        <Footer />
-      </div>
+      <ContentContainer />
     </div>
   );
 };

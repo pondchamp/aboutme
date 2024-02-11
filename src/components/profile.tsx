@@ -205,7 +205,7 @@ export const Profile = () => {
 
   return layoutState.layoutAnimState != LayoutAnimState.NOT_MOUNTED ? (
     <div
-      className="w-full z-20 absolute inset-x-0 flex items-center justify-center overflow-hidden"
+      className="z-20 absolute inset-x-0 flex items-center justify-center"
       style={{
         height: classProps.containerHeight,
       }}

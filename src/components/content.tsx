@@ -20,6 +20,44 @@ interface ProjectHistoryEntry {
   url?: string;
 }
 
+interface EducationHistoryEntry {
+  description: JSX.Element;
+  logo: string;
+  title: string;
+}
+
+const Education: EducationHistoryEntry[] = [
+  {
+    description: (
+      <ul className="list-disc pl-4">
+        <li>
+          BSc in Computer Science - <i>magna cum laude equiv.</i>
+        </li>
+        <li>
+          BComm in Financial Econometrics - <i>magna cum laude equiv.</i>
+        </li>
+      </ul>
+    ),
+    logo: "img/logo/unsw.png",
+    title: "University of NSW",
+  },
+  {
+    description: (
+      <>
+        BA in Economics (Student Exchange) -{" "}
+        <i>Dean&apos;s List in Economics, Fall 2014</i>
+      </>
+    ),
+    logo: "img/logo/ucdavis.png",
+    title: "UC Davis",
+  },
+  {
+    description: <>High School Certificate</>,
+    logo: "img/logo/knox.png",
+    title: "Knox Grammar School",
+  },
+];
+
 const Projects: ProjectHistoryEntry[] = [
   {
     description: (
@@ -301,6 +339,32 @@ export const Content = () => {
               <div className="text-sm md:text-base pt-4">
                 {project.description}
               </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p className="text-2xl font-bold text-center pb-8">Education</p>
+        <div className="text-justify hyphens-manual flex flex-col gap-8">
+          {Education.map((edu, i) => (
+            <div key={`project-${i}`}>
+              <div className="flex items-center gap-4">
+                <div>
+                  <Image
+                    className="rounded-lg border-2 border-beige/80"
+                    src={edu.logo ?? ""}
+                    alt={`project logo ${edu.title}`}
+                    width={40}
+                    height={40}
+                  />
+                </div>
+                <div className="grow font-bold flex flex-col gap-1">
+                  <div className="text-base md:text-lg flex items-center gap-2">
+                    {edu.title}
+                  </div>
+                </div>
+              </div>
+              <div className="text-sm md:text-base pt-4">{edu.description}</div>
             </div>
           ))}
         </div>

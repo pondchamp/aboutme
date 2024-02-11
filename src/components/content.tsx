@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface JobHistoryEntry {
   accomplishments: JSX.Element[];
@@ -8,24 +9,29 @@ interface JobHistoryEntry {
   logo?: string;
   startYear: number;
   title: string;
+  url?: string;
 }
 
-const AdditionalHistory: JSX.Element[] = [
-  <>
-    Built predictive model to geo&shy;locate EFTPOS terminals, enabling
-    Aust&shy;ralian bank to pinpoint card transac&shy;tions within several
-    meters of accuracy, identifying 225K+ term&shy;inals nation&shy;wide.
-  </>,
-  <>
-    Taught two univer&shy;sity courses for 300+ students while study&shy;ing
-    part-time, receiving 95% satis&shy;faction rating for both courses on
-    student feed&shy;back survey.
-  </>,
-  <>
-    Built curated travel planning app leverag&shy;ing ChatGPT within one week,
-    enabling 30+ new users in first seven days to create fully customized
-    itiner&shy;aries in 1-2 minutes.
-  </>,
+interface ProjectHistoryEntry {
+  description: JSX.Element;
+  logo: string;
+  title: string;
+  url?: string;
+}
+
+const Projects: ProjectHistoryEntry[] = [
+  {
+    description: (
+      <>
+        Built curated travel planning app leverag&shy;ing ChatGPT within one
+        week, enabling 30+ new users in first seven days to create fully
+        customized itiner&shy;aries in 1-2 minutes.
+      </>
+    ),
+    logo: "img/logo/conciergpt.png",
+    title: "ConcierGPT",
+    url: "https://conciergpt.ai/",
+  },
 ];
 
 const JobHistory: JobHistoryEntry[] = [
@@ -54,6 +60,7 @@ const JobHistory: JobHistoryEntry[] = [
     logo: "img/logo/tiktok.png",
     startYear: 2022,
     title: "Senior Software Engineer",
+    url: "https://www.tiktok.com/business/en-US/blog/branded-mission-topview-cpm-top-feed",
   },
   {
     accomplishments: [
@@ -88,6 +95,7 @@ const JobHistory: JobHistoryEntry[] = [
     logo: "img/logo/synerai.png",
     startYear: 2021,
     title: "Chief Technology Officer",
+    url: "https://synerai.com/",
   },
   {
     accomplishments: [
@@ -117,6 +125,7 @@ const JobHistory: JobHistoryEntry[] = [
     logo: "img/logo/twitch.png",
     startYear: 2020,
     title: "Software Engineer II",
+    url: "https://twitchadvertising.tv/bounty-board/",
   },
   {
     accomplishments: [
@@ -147,8 +156,38 @@ const JobHistory: JobHistoryEntry[] = [
     ),
     endYear: 2020,
     logo: "img/logo/microsoft.png",
-    startYear: 2018,
+    startYear: 2017,
     title: "Data Engineer II",
+  },
+  {
+    accomplishments: [
+      <>
+        Built predictive model to geo&shy;locate EFTPOS terminals, enabling
+        Aust&shy;ralian bank to pinpoint card transac&shy;tions within several
+        meters of accuracy, identifying 225K+ term&shy;inals nation&shy;wide.
+      </>,
+    ],
+    company: "Commonwealth Bank",
+    description: <></>,
+    endYear: 2017,
+    logo: "img/logo/commbank.png",
+    startYear: 2016,
+    title: "Data Science Intern",
+  },
+  {
+    accomplishments: [
+      <>
+        Taught two univer&shy;sity courses for 300+ students while study&shy;ing
+        part-time, receiving 95% satis&shy;faction rating for both courses on
+        student feed&shy;back survey.
+      </>,
+    ],
+    company: "University of New South Wales",
+    description: <></>,
+    endYear: 2016,
+    logo: "img/logo/unsw.png",
+    startYear: 2016,
+    title: "Teaching Assistant",
   },
 ];
 
@@ -189,9 +228,20 @@ export const Content = () => {
                 </div>
                 <div className="grow font-bold flex flex-col gap-1">
                   <div className="text-base md:text-lg flex justify-between">
-                    <div>{job.company}</div>
                     <div>
-                      {job.startYear} &mdash; {job.endYear ?? "Present"}
+                      {job.url ? (
+                        <Link target="_blank" href={job.url}>
+                          {job.company}
+                        </Link>
+                      ) : (
+                        <>{job.company}</>
+                      )}
+                    </div>
+                    <div>
+                      {job.startYear}
+                      {job.startYear != job.endYear && (
+                        <> &mdash; {job.endYear ?? "Present"}</>
+                      )}
                     </div>
                   </div>
                   <div className="text-sm md:text-base">{job.title}</div>
@@ -215,19 +265,38 @@ export const Content = () => {
         </div>
       </div>
       <div>
-        <p className="text-2xl font-bold text-center pb-8">
-          Additional Accomplishments
-        </p>
-        <div className="text-sm md:text-base text-justify hyphens-manual">
-          <ul className="list-disc pl-4">
-            {AdditionalHistory.map((acc, i) => (
-              <li key={`additional-acc-${i}`}>{acc}</li>
-            ))}
-          </ul>
+        <p className="text-2xl font-bold text-center pb-8">Projects</p>
+        <div className="text-justify hyphens-manual flex flex-col gap-8">
+          {Projects.map((project, i) => (
+            <div key={`project-${i}`}>
+              <div className="flex items-center gap-4">
+                <div>
+                  <Image
+                    className="rounded-lg border-2 border-beige/80"
+                    src={project.logo ?? ""}
+                    alt={`project logo ${project.title}`}
+                    width={40}
+                    height={40}
+                  />
+                </div>
+                <div className="grow font-bold flex flex-col gap-1">
+                  <div className="text-base md:text-lg">
+                    {project.url ? (
+                      <Link target="_blank" href={project.url}>
+                        {project.title}
+                      </Link>
+                    ) : (
+                      <>{project.title}</>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="text-sm md:text-base pt-4">
+                {project.description}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
-      <div className="text-xl font-bold text-center pb-10">
-        🚧 Under Construction 🚧
       </div>
     </div>
   );

@@ -40,21 +40,23 @@ export const ContentContainer = () => {
     );
   }, [dispatch, layoutState.layoutAnimState, contentRef]);
 
-  return layoutState.layoutAnimState == LayoutAnimState.COMPLETED ||
-    layoutState.layoutAnimState == LayoutAnimState.CONTENT_MOUNT_READY ? (
+  return (
     <div className="absolute inset-0">
       <div className="z-10 absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-brown1 from-10% to-transparent"></div>
       <Profile />
-      <Scrollbars
-        onUpdate={({ scrollTop }) => dispatch(SetContentScrollTop(scrollTop))}
-      >
-        <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20">
-          <Content />
-        </div>
-      </Scrollbars>
+      {layoutState.layoutAnimState == LayoutAnimState.COMPLETED ||
+      layoutState.layoutAnimState == LayoutAnimState.CONTENT_MOUNT_READY ? (
+        <Scrollbars
+          onUpdate={({ scrollTop }) => dispatch(SetContentScrollTop(scrollTop))}
+        >
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20">
+            <Content />
+          </div>
+        </Scrollbars>
+      ) : (
+        <></>
+      )}
       <Footer />
     </div>
-  ) : (
-    <></>
   );
 };

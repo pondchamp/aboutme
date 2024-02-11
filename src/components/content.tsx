@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BoxArrowUpRight } from "react-bootstrap-icons";
 
 interface JobHistoryEntry {
   accomplishments: JSX.Element[];
@@ -228,11 +229,14 @@ export const Content = () => {
                 </div>
                 <div className="grow font-bold flex flex-col gap-1">
                   <div className="text-base md:text-lg flex justify-between">
-                    <div>
+                    <div className="flex items-center gap-2">
                       {job.url ? (
-                        <Link target="_blank" href={job.url}>
-                          {job.company}
-                        </Link>
+                        <>
+                          <Link target="_blank" href={job.url}>
+                            {job.company}
+                          </Link>
+                          <BoxArrowUpRight className="text-xs" />
+                        </>
                       ) : (
                         <>{job.company}</>
                       )}
@@ -280,11 +284,14 @@ export const Content = () => {
                   />
                 </div>
                 <div className="grow font-bold flex flex-col gap-1">
-                  <div className="text-base md:text-lg">
+                  <div className="text-base md:text-lg flex items-center gap-2">
                     {project.url ? (
-                      <Link target="_blank" href={project.url}>
-                        {project.title}
-                      </Link>
+                      <>
+                        <Link target="_blank" href={project.url}>
+                          {project.title}
+                        </Link>
+                        <BoxArrowUpRight className="text-xs" />
+                      </>
                     ) : (
                       <>{project.title}</>
                     )}

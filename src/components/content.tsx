@@ -183,7 +183,7 @@ const JobHistory: JobHistoryEntry[] = [
         student feed&shy;back survey.
       </>,
     ],
-    company: "University of New South Wales",
+    company: "University of NSW",
     description: <></>,
     endYear: 2016,
     logo: "img/logo/unsw.png",

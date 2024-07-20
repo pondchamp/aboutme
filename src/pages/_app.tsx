@@ -22,14 +22,14 @@ const MyApp = (props: AppProps) => {
           <meta property="og:type" content="website" />
           <meta property="og:title" content={FullName} />
           <meta property="og:description" content={MySummary} />
-          <meta property="og:image" content="img/me.jpg" />
+          <meta property="og:image" content="/img/me.jpg" />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta property="twitter:domain" content="julianblair.me" />
           <meta property="twitter:url" content="https://julianblair.me/" />
           <meta name="twitter:title" content={FullName} />
           <meta name="twitter:description" content={MySummary} />
-          <meta name="twitter:image" content="img/me.jpg" />
+          <meta name="twitter:image" content="/img/me.jpg" />
         </Head>
         <Component {...pageProps} />
       </CookiesProvider>

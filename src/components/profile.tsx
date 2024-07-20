@@ -1,9 +1,9 @@
 import { animate } from "framer-motion";
-import dynamic from "next/dynamic";
 import Image from "next/image";
 import { createRef, useEffect, useMemo } from "react";
 import { shallowEqual } from "react-redux";
 
+import { Title } from "@/components/title";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { usePageViewed } from "@/hooks/usePageViewed";
 import { useViewport } from "@/hooks/useViewport";
@@ -36,11 +36,6 @@ const profileImgRefFinal = {
   height: 85,
   width: 85,
 };
-
-const Title = dynamic(
-  () => import("@/components/title").then((mod) => mod.Title),
-  { ssr: false }
-);
 
 interface ClassProps {
   containerHeight: string;
@@ -296,13 +291,13 @@ export const Profile = () => {
               </div>
               {layoutState.layoutAnimState != LayoutAnimState.MOUNT_STARTED && (
                 <div
-                  className="text-xs md:text-sm w-[170px] md:w-[450px]"
+                  className="text-xs md:text-sm w-[170px] md:w-[480px]"
                   style={{
                     opacity: classProps.subtitleOpacity,
                   }}
                   ref={profileSubtitleRef}
                 >
-                  Brand Advertising &#x2022; Generative AI &#x2022; Economic
+                  Digital Entertainment &#x2022; Generative AI &#x2022; Economic
                   Analysis
                 </div>
               )}

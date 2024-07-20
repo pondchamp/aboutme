@@ -75,6 +75,15 @@ const Projects: ProjectHistoryEntry[] = [
 
 const JobHistory: JobHistoryEntry[] = [
   {
+    accomplishments: [],
+    company: "Netflix",
+    description: <>Lifecycle Messaging</>,
+    logo: "img/logo/netflix.jpg",
+    startYear: 2024,
+    title: "Senior Software Engineer",
+    url: "https://sites.google.com/netflix.com/messaging",
+  },
+  {
     accomplishments: [
       <>
         Developed LLM-backed sales pitch&shy;ing tool for TikTok&apos;s
@@ -96,6 +105,7 @@ const JobHistory: JobHistoryEntry[] = [
         Mission.
       </>
     ),
+    endYear: 2024,
     logo: "img/logo/tiktok.png",
     startYear: 2022,
     title: "Senior Software Engineer",

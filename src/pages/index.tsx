@@ -1,11 +1,17 @@
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import { useEffect } from "react";
 import { shallowEqual } from "react-redux";
 
-import { ContentContainer } from "@/components/content_container";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import { usePageViewed } from "@/hooks/usePageViewed";
 import { LayoutAnimState, SetLayoutAnimState } from "@/slice/LayoutSlice";
+
+const ContentContainer = dynamic(() =>
+  import("@/components/content_container").then(
+    (module) => module.ContentContainer
+  )
+);
 
 const Home: NextPage = () => {
   const dispatch = useAppDispatch();

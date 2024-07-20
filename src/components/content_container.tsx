@@ -49,7 +49,10 @@ export const ContentContainer = () => {
         <Scrollbars
           onUpdate={({ scrollTop }) => dispatch(SetContentScrollTop(scrollTop))}
         >
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20">
+          <div
+            className="absolute left-1/2 transform -translate-x-1/2 top-0 w-full max-w-[800px] flex justify-center px-4 pt-36 pb-20"
+            ref={contentRef}
+          >
             <Content />
           </div>
         </Scrollbars>

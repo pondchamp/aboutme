@@ -75,9 +75,39 @@ const Projects: ProjectHistoryEntry[] = [
 
 const JobHistory: JobHistoryEntry[] = [
   {
-    accomplishments: [],
+    accomplishments: [
+      <>
+        Spearheaded the deployment of our email tooling into a broader set of
+        use cases that better meet the immediate needs of our Messaging product
+        and campaign manage&shy;ment teams, leading to a project&shy;ed increase
+        of 1BN+ engage&shy;ment messages sent across 50+ new messag&shy;ing
+        experiences in the first year of launch.
+      </>,
+      <>
+        Mentored three mid-level engineers in their career develop&shy;ment, one
+        of whom was pro&shy;moted from a new grad during our mentor&shy;ship
+        period.
+      </>,
+      <>
+        Driven high-level cross-functional discussions around message
+        modulari&shy;sation strategy, coalescing dozens of divergent opinions
+        around immediate impact and operat&shy;ional excellence in messaging
+        development.
+      </>,
+    ],
     company: "Netflix",
-    description: <>Lifecycle Messaging</>,
+    description: (
+      <>
+        Built and improved messaging experiences for Netflix members and
+        developer frame&shy;works for fellow engineers in the Messaging org. Key
+        contributor to technical strategy, design, and development around
+        increasing flexi&shy;bility and agility in how Netflix designs and
+        constructs bespoke emails design&shy;ed to engage its 300MM+ members by
+        provid&shy;ing exposure to the most relevant and timely content in the
+        vast and grow&shy;ing Netflix catalogue, and with new features
+        roll&shy;ing out across the Netflix product suite.
+      </>
+    ),
     logo: "img/logo/netflix.jpg",
     startYear: 2024,
     title: "Senior Software Engineer",

@@ -297,8 +297,8 @@ export const Profile = () => {
                   }}
                   ref={profileSubtitleRef}
                 >
-                  Digital Entertainment &#x2022; Generative AI &#x2022; Economic
-                  Analysis
+                  Digital Entertainment &#x2022; AI/ML Product &#x2022;
+                  Econometrics
                 </div>
               )}
             </div>
